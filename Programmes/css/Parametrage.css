@@ -1,0 +1,659 @@
+/* ------------------------ RESET GÉNÉRAL ------------------------ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    font-family: calibri;
+}
+
+body {
+    min-width: 100px;
+    min-height: 100px;
+    background: #ffffff;
+}
+
+img {
+    width: 16px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    vertical-align: middle;
+}
+
+img:hover { transform: scale(1.3); }
+
+/* Style général pour TOUS les boutons HTML */
+button {
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-family: calibri;
+    font-size: inherit;
+}
+
+button:hover{
+    background-color: #0056b3;
+}
+
+/*-------------------------------- NAVBAR --------------------------------*/
+
+.navBar {
+    width: 100%; /* Prend toute la largeur */
+    height: 10vh; /* Hauteur relative */
+    min-height: 77px; /* Hauteur minimale */
+    padding: 35px 35px; /* Espace intérieur */
+    display: flex; /* Alignement flex */
+    align-items: center; 
+    justify-content: space-between; 
+    font-size: 15px;
+    background-color: #77B5FE; /* Bleu clair */
+}
+
+.navBar #navAutre {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%; /* Rond */
+    width: 30px;
+    height: 30px;
+}
+
+.navBar #navAutre a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.navBar #navAutre img{
+    margin: 1% 1% 0;
+    float: left;
+}
+
+.navBar #navTitre {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center; 
+    font-size: 50px !important;
+    border-radius: 5px;
+    padding-left: 7%;
+}
+
+.navBar #navDeconnexion {
+    border-radius: 5px;
+}
+
+.navBar #navDeconnexion .btnDeconnexion{
+    background-color: #007bff;
+    color: white; 
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    padding: 5px 10px;
+    transition: transform 0.2s ease;
+}
+
+.navBar #navDeconnexion .btnDeconnexion:hover{
+    transform: scale(1.1);
+}
+
+/*-------------------------------- CONTENEUR PRINCIPAL --------------------------------*/
+
+.container {
+   display: flex; /* Organisation principale */
+   justify-content: flex-start;
+   height: 90vh;
+}
+
+.container .selectionTable {
+    flex: 0 0 auto;
+    width: 10vw;
+    height: 100%;
+    padding: 25px 10px;
+    float: left;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    background-color: #F5F2F0;
+    border-radius: 5px;
+}
+
+.container .selectionTable button {
+    width: 75%;
+    min-width: 25px;
+    height: 35px;
+    min-height: 15px;
+    max-height: 50px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF; /* Bleu vif */
+    cursor: pointer;
+    color: white;
+}
+
+.container .selectionTable button:hover {
+    background-color: #0056b3; /* Bleu foncé au survol */
+    transform: scale(1.1);
+}
+
+.container .selectionTable button.active {
+    background-color: #0056b3;
+    transform: scale(1.1);
+    color: white;
+}
+
+.container .tabParametrage {
+    width: 90vw;
+    padding: 25px;
+    background: #ffffff;
+}
+
+.container .tabParametrage .divTableau {
+    width: 100%;
+    height: 100%;
+    flex: 1;
+    border-radius: 15px;
+    background-color: #F5F2F0;
+}
+
+/*----------- En-tête tableau + recherche -----------*/
+.container .tabParametrage .divTableau #enteteTab {
+    padding: 2px;
+    height: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 20px;
+}
+
+.container .tabParametrage .divTableau #enteteTab #recherche {
+    width: 12%;
+    height: 85%;
+    float: right;
+    border: solid 1px;
+    border-radius: 15px;
+    padding: 2px;
+    background-color: #77B5FE;
+    display: flex;
+    align-items: center;
+}
+
+.container .tabParametrage .divTableau #enteteTab #recherche #imgRecherche{
+    width: 10%;
+    height: 100%;
+    margin-left: 5px;
+}
+
+.container .tabParametrage .divTableau #enteteTab #recherche #searchInput {
+    width: 84%;
+    height: 100%;
+    float: right;
+    border: none;
+    margin-left: 2px;
+    border-radius:  0 15px 15px 0;
+    padding: 5px;
+    background-color: #77B5FE;
+    color: black;
+}
+
+.container .tabParametrage .divTableau #enteteTab #recherche #searchInput:focus {
+    outline: none;
+}
+
+/*----------- Conteneur tableau -----------*/
+.container .tabParametrage .divTableau #tab {
+    width: 100%;
+    height: 95%;
+    border-radius: 0 0 15px 15px;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+
+.container .tabParametrage .divTableau #tab table {
+    border-collapse: collapse;
+    width: 100%;
+    height: 100%;
+    table-layout: fixed;
+    border-radius: 15px;
+}
+
+/*----------- Styles colonnes -----------*/
+.container .tabParametrage .divTableau #tab th, .divTableau #tab thead td {
+    border: 1px solid #ffffff;
+}
+
+.container .tabParametrage .divTableau #tab thead th {
+    position: sticky;
+    top: 0;
+    background-color: rgb(206, 206, 206);
+    z-index: 2;
+}
+
+.container .tabParametrage .divTableau #tab thead tr {
+    height: 40px;
+}
+
+.container .tabParametrage .divTableau #tab tbody tr {
+    width: 100%;
+    height: 75px;
+}
+
+.container .tabParametrage .divTableau #tab th,
+.container .tabParametrage .divTableau #tab td {
+    border: 1px solid #ddd;
+    padding: 5px;
+    text-align: left;
+    word-break: break-word;
+}
+
+.container .tabParametrage .divTableau #tab tbody tr:nth-child(even) {
+    background-color: #e4e4e4; /* Alternance de lignes */
+}
+
+/* Largeurs spécifiques pour colonnes */
+.tabParametrage th:nth-child(1) { width: 250px; }
+.tabParametrage th:nth-child(2) { width: 85px; }
+
+.container .tabParametrage .divTableau #tab th.actions,
+.container .tabParametrage .divTableau #tab td.actions { width: 90px !important; }
+
+.container .tabParametrage .divTableau #tab th.nom,
+.container .tabParametrage .divTableau #tab td.nom,
+.container .tabParametrage .divTableau #tab th.nomcarte,
+.container .tabParametrage .divTableau #tab td.nomcarte,
+.container .tabParametrage .divTableau #tab th.nomchapelle,
+.container .tabParametrage .divTableau #tab td.nomchapelle {
+    width: 150px !important;
+}
+
+.container .tabParametrage .divTableau #tab th.marque,
+.container .tabParametrage .divTableau #tab td.marque,
+.container .tabParametrage .divTableau #tab th.reference,
+.container .tabParametrage .divTableau #tab td.reference,
+.container .tabParametrage .divTableau #tab th.numserie,
+.container .tabParametrage .divTableau #tab td.numserie {
+    width: 100px !important;
+}
+
+.container .tabParametrage .divTableau #tab th.datemiseenservice,
+.container .tabParametrage .divTableau #tab td.datemiseenservice {
+    width: 150px !important;
+}
+
+.container .tabParametrage .divTableau #tab th.commentaire,
+.container .tabParametrage .divTableau #tab td.commentaire {
+    width: 350px !important;
+}
+
+.container .tabParametrage .divTableau #tab th.seuilmax,
+.container .tabParametrage .divTableau #tab td.seuilmax,
+.container .tabParametrage .divTableau #tab th.seuilmin,
+.container .tabParametrage .divTableau #tab td.seuilmin {
+    width: 75px !important;
+}
+
+.container .tabParametrage .divTableau #tab th.etatcomposant,
+.container .tabParametrage .divTableau #tab td.etatcomposant,
+.container .tabParametrage .divTableau #tab th.grandeurcapt,
+.container .tabParametrage .divTableau #tab td.grandeurcapt {
+    width: 120px !important;
+}
+
+.container .tabParametrage .divTableau #tab th.unite,
+.container .tabParametrage .divTableau #tab td.unite {
+    width: 75px !important;
+}
+
+.container .tabParametrage .divTableau #tab th.appkey,
+.container .tabParametrage .divTableau #tab td.appkey,
+.container .tabParametrage .divTableau #tab th.appeui,
+.container .tabParametrage .divTableau #tab td.appeui {
+    width: 150px !important;
+}
+
+/*------------- Icônes Actions -------------*/
+.addImage, .modifierImage, .deleteImage {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    transition: transform 0.2s ease;
+    margin-left: 5px;
+}
+
+.addImage:hover, .modifierImage:hover, .deleteImage:hover {
+    transform: scale(1.3);
+}
+
+/*------------- Modale Générique -------------*/
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-form {
+    background-color: #fff;
+    padding: 20px 30px;
+    border-radius: 8px;
+    max-width: 25vw;
+    min-width: 300px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.modal-form input[type="text"],
+.modal-form select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.modal-title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 30px;
+    color: #888;
+    transition: transform 0.2s ease;
+    cursor: pointer;
+}
+
+.modal-close:hover {
+    color: #000;
+    transform: scale(1.2);
+}
+
+#modalOverlay {
+    border: 20px solid black; /* Encadrement */
+}
+
+.modal-close-icon {
+    width: 16px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.modal-close-icon:hover {
+    transform: scale(1.2);
+}
+
+/*-------------------------------- RESPONSIVE --------------------------------*/
+
+@media (max-width: 900px) {
+    .navBar {
+        flex-direction: column;
+        height: auto;
+        padding: 15px;
+        gap: 10px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .navBar #navTitre {
+        font-size: 30px !important;
+        padding-left: 0;
+    }
+
+    .container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .container .selectionTable {
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .container .selectionTable button {
+        width: 40%;
+        max-width: 200px;
+    }
+
+    .container .tabParametrage {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .modal-form {
+        width: 90vw;
+        max-width: none;
+        min-width: 0;
+    }
+
+    .modal-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 600px) {
+    .navBar {
+        font-size: 12px;
+    }
+
+    .navBar #navTitre {
+        font-size: 24px !important;
+    }
+
+    .container .selectionTable button {
+        width: 80%;
+    }
+
+    .modal-form input[type="text"],
+    .modal-form select {
+        font-size: 14px;
+    }
+
+    .modal-close {
+        font-size: 24px;
+    }
+}
+
+/*-------------------------------- MODE SOMBRE --------------------------------*/
+
+body.dark-mode {
+    background-color: #0f032e;
+    color: #f0f0f0;
+}
+
+body.dark-mode img {
+    filter: invert(1) brightness(1.2);
+}
+
+body.dark-mode img:hover {
+    transform: scale(1.3);
+}
+
+body.dark-mode .navBar {
+    background-color: #090120;
+    color: #f0f0f0;
+}
+
+#modeIcon {
+    margin-left: 10px;
+}
+
+body.dark-mode .navBar .btnDeconnexion {
+    background-color: transparent;
+    color: #f0f0f0;
+    border: none;
+}
+
+body.dark-mode .container .selectionTable {
+    background-color: #090120;
+}
+
+body.dark-mode .container .selectionTable button {
+    background-color: #007bff;
+    color: white;
+    border: 1px solid #0056b3;
+}
+
+body.dark-mode .container .selectionTable button:hover,
+body.dark-mode .container .selectionTable button.active {
+    background-color: #0056b3;
+}
+
+body.dark-mode .container .tabParametrage {
+    background: #0f032e;
+}
+
+body.dark-mode .container .tabParametrage .divTableau {
+    background-color: #090120;
+    border: 1px solid #555;
+}
+
+body.dark-mode .container .tabParametrage .divTableau #enteteTab h2 {
+    color: #f0f0f0;
+}
+
+body.dark-mode .container .tabParametrage .divTableau #enteteTab #recherche {
+    background-color: #2a2a2a;
+    border: 1px solid #555;
+}
+
+body.dark-mode .container .tabParametrage .divTableau #enteteTab #recherche #searchInput {
+    background-color: #2a2a2a;
+    color: #f0f0f0;
+}
+body.dark-mode .container .tabParametrage .divTableau #enteteTab #recherche #searchInput::placeholder {
+    color: #aaa;
+}
+
+body.dark-mode .container .tabParametrage .divTableau #tab thead th {
+    background-color: #2a2a2a;
+    color: #f0f0f0;
+    border: 1px solid #555;
+}
+
+body.dark-mode .container .tabParametrage .divTableau #tab td {
+    border: 1px solid #444;
+    color: #f0f0f0;
+}
+
+body.dark-mode .container .tabParametrage .divTableau #tab tbody tr:nth-child(even) {
+    background-color: #120227;
+}
+
+body.dark-mode .container .tabParametrage .divTableau #tab tbody tr:nth-child(odd) {
+    background-color: #090120;
+}
+
+body.dark-mode .addImage,
+body.dark-mode .modifyImage,
+body.dark-mode .deleteImage {
+    filter: invert(1) brightness(1.2);
+}
+
+/* Modale de Parametrage */
+body.dark-mode .modal { /* div#modalOverlay */
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+body.dark-mode .modal .modal-form {
+    background-color: #090120;
+    color: #f0f0f0;
+    border: 1px solid #555;
+    box-shadow: 0 8px 30px rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .modal .modal-form h2,
+body.dark-mode .modal .modal-form label {
+    color: #f0f0f0;
+}
+
+body.dark-mode .modal .modal-form input[type="text"],
+body.dark-mode .modal .modal-form select {
+    background-color: #2a2a2a;
+    color: #f0f0f0;
+    border: 1px solid #555;
+    padding: 8px; /* Ajout padding pour esthétique */
+    border-radius: 4px; /* Ajout radius */
+}
+
+body.dark-mode .modal .modal-form button {
+    background-color: #007bff;
+    color: white;
+    border: 1px solid #0056b3;
+    padding: 8px 12px; /* Cohérence padding */
+    border-radius: 4px; /* Cohérence radius */
+}
+
+body.dark-mode .modal .modal-form button:hover {
+    background-color: #0056b3;
+}
+
+body.dark-mode .modal .modal-form .modal-close {
+    color: #bbb;
+}
+
+body.dark-mode .modal .modal-form .modal-close:hover {
+    color: #fff;
+}
+
+body.dark-mode .modal-close-icon {
+    filter: none;
+}
+
+.modal-title-container {
+    display: flex; /* Déjà présent dans votre CSS ou implicite */
+    justify-content: space-between; /* Pour espacer le titre et la croix */
+    align-items: center; /* Pour aligner verticalement */
+    margin-bottom: 15px; /* Espace sous le titre */
+}
+
+.modal-title-container h2 {
+    margin: 0; /* Enlève la marge par défaut du h2 si besoin */
+    flex-grow: 1; /* Permet au titre de prendre l'espace disponible */
+}
+
+.modal-close-icon {
+    width: 20px; /* Ajustez la taille */
+    height: 20px; /* Ajustez la taille */
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    /* Pas besoin de float ou position: absolute si parent est flex et bien configuré */
+    margin-left: 10px; /* Espace entre le titre et la croix si le titre est long */
+}
+
+.modal-close-icon:hover {
+    transform: scale(1.2);
+}
+
+/* Pour le mode sombre */
+body.dark-mode .modal-close-icon {
+    filter: invert(1) brightness(1.2); /* Ou `filter: none;` si vous ne voulez pas l'inverser */
+}
+
+body.dark-mode .modal-form .modal-title-container h2 { /* S'assurer que le titre reste visible */
+    color: #f0f0f0;
+}
