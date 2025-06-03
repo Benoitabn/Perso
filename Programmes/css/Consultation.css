@@ -202,15 +202,30 @@ button:hover{
 }
 
 /* ------------------------ MODAL : Plage Temporelle ------------------------ */
-#model, .model { /* Modale générique */
+
+.model {
     display: none;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: white;
+    background-color: #F5F2F0;
+    border: 1px solid #ccc;
     padding: 20px;
-    border: 1px solid black; /* Garder cette bordure pour la modale elle-même ? Ou la retirer ? */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    z-index: 10000;
+}
+
+#model {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #F5F2F0;
+    border: 1px solid #ccc;
+    padding: 40px 20px 20px 20px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     z-index: 10001;
@@ -240,17 +255,17 @@ button:hover{
     width: 16px;
     cursor: pointer;
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 15px;
+    right: 15px;
     transition: transform 0.2s ease;
 }
 
 .close-icon:hover {
-    transform: scale(1.1);
+    transform: scale(1.3);
 }
 
 body.dark-mode .close-icon {
-    filter: none;
+    filter: invert(1) brightness(1.2);
 }
 
 /* ------------------------ MODALE AJOUT COURBE ------------------------ */
@@ -263,6 +278,7 @@ body.dark-mode .close-icon {
     height: auto;
     background-color: #F5F2F0;
     border-radius: 10px;
+    border: 1px solid #ccc;
     padding: 2%;
     display: flex;
     flex-direction: column;
@@ -371,12 +387,6 @@ body.dark-mode .close-icon {
     text-align: center;
 }
 
-#ajoutCourbeDiv .close-icon {
-    align-self: flex-end;
-    margin-bottom: 10px;
-    position: static;
-}
-
 /* ------------------------ GRAPHIQUE PRINCIPAL ------------------------ */
 #divGraphiques {
     width: 71vw;
@@ -407,15 +417,18 @@ body.dark-mode .close-icon {
     width: 100% !important; /* Forcer le canvas à prendre la largeur du parent */
     height: 100% !important; /* Forcer le canvas à prendre la hauteur du parent */
     max-width: 100%;
-    max-height: calc(100% - 20px); /* Laisser de la place pour les icônes d'export */
-    /* margin: 5px 0 0 5px; /* Ajusté par le padding du parent */
 }
 
-.graphiquePlein { flex: 1 1 100%; max-width: 100%; }
+.graphiquePlein {
+    flex: 1 1 100%;
+    max-width: 100%;
+    height: 100%;
+}
 
 .graphiqueMoitié {
-    flex: 1 1 calc(50% - 10px); /* 10px pour la moitié du gap */
+    flex: 1 1 calc(50% - 10px);
     max-width: calc(50% - 10px);
+    aspect-ratio: 16 / 9;
 }
 
 .graphiqueBloc img.img-export,
@@ -424,16 +437,11 @@ body.dark-mode .close-icon {
     top: 10px;
     right: 10px;
     width: 16px;
+    z-index: 10;
 }
 
 
-.graphiqueSecondaire { /* S'applique aux blocs de graphiques ajoutés */
-    /* flex et max-width déjà gérés par .graphiqueMoitié */
-    aspect-ratio: 4 / 3; /* Peut être retiré si min-height suffit */
-    /* background-color, border-radius, padding, display hérités de .graphiqueBloc */
-}
-
-/* #divGraphiques .graphiqueSecondaire { display: flex !important; } /* Déjà flex via .graphiqueBloc */
+.graphiqueSecondaire { aspect-ratio: 4 / 3; }
 
 /* ------------------------ DIVERS ------------------------ */
 .close { /* Style pour les boutons de fermeture 'x' des modales */

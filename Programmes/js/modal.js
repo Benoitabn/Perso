@@ -127,6 +127,7 @@ export async function openAddModal(currentTable, updateTable) { // Ouvre modale 
         // --- FIN NOUVEAU ---
 
         form.appendChild(titleContainer); // Ajoute au form
+        form.appendChild(closeImg);
 
         columns.forEach(col => { // Pour chaque champ
             const label = document.createElement('label'); // Crée label

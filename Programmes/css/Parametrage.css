@@ -354,6 +354,7 @@ button:hover{
     display: flex;
     flex-direction: column;
     gap: 10px;
+    position: relative;
 }
 
 .modal-buttons {
@@ -394,6 +395,9 @@ button:hover{
 }
 
 .modal-close-icon {
+    position: absolute;
+    top: 15px;
+    right: 15px;
     width: 16px;
     cursor: pointer;
     transition: transform 0.2s ease;
@@ -621,7 +625,7 @@ body.dark-mode .modal .modal-form .modal-close:hover {
 }
 
 body.dark-mode .modal-close-icon {
-    filter: none;
+    filter: invert(1) brightness(1.2);
 }
 
 .modal-title-container {
